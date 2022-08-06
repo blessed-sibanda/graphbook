@@ -1,6 +1,8 @@
 import { gql, useQuery } from "@apollo/client";
 import React, { useState } from "react";
 import Chat from "./Chat";
+import Error from "./components/error";
+import Loading from "./components/loading";
 
 const usernamesToString = (users) => {
   const userList = users.slice(1);
@@ -62,13 +64,15 @@ const Chats = () => {
   if (loading)
     return (
       <div className="chats">
-        <p>Loading...</p>
+        <Loading />
       </div>
     );
   if (error)
     return (
       <div className="chats">
-        <p>{error.message}</p>
+        <Error>
+          <p>{error.message}</p>
+        </Error>
       </div>
     );
   const { chats } = data;

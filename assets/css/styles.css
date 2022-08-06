@@ -178,3 +178,33 @@ form [type=submit] {
 .chatWindow .input input:focus {
   outline: none;
 }
+
+.bouncer {
+  margin: 20px auto;
+  border-radius: 100%;
+  animation: bounce 1.0s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.0);
+  }
+}
+
+.message {
+  margin: 20px auto;
+  padding: 5px;
+  max-width: 40px;
+}
+
+.error.message {
+  border-radius: 5px;
+  background-color: #fff7f5;
+  border: 1px solid #ff9566;
+  width: 100%;
+}

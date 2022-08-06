@@ -1,6 +1,9 @@
 import { gql, useMutation, useQuery } from "@apollo/client";
 import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Loading from "./components/loading";
+import Error from "./components/error";
+import Post from "./components/post";
 
 const GET_POSTS = gql`
   query postsFeed($page: Int, $limit: Int) {
@@ -88,8 +91,8 @@ const Feed = () => {
     variables: { page: 0, limit: 10 },
   });
 
-  if (loading) return "Loading...";
-  if (error) return `Error! ${error.message}`;
+  if (loading) return <Loading />;
+  if (error) return <Error>{`Error! ${error.message}`}</Error>;
 
   const { postsFeed } = data;
   const { posts } = postsFeed;
@@ -144,13 +147,7 @@ const Feed = () => {
           }
         >
           {posts.map((post, i) => (
-            <div key={post.id} className="post">
-              <div className="header">
-                <img src={`http://localhost:8000${post.user.avatar}`} alt="" />
-                <h2>{post.user.username}</h2>
-              </div>
-              <p className="content">{post.text}</p>
-            </div>
+            <Post key={post.id} post={post} />
           ))}
         </InfiniteScroll>
       </div>
