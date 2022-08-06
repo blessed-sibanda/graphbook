@@ -45,10 +45,15 @@ const typeDefinitions = gql`
     chatId: Int!
   }
 
+  type PostFeed {
+    posts: [Post]
+  }
+
   type RootQuery {
     posts: [Post]
     chats: [Chat]
     chat(chatId: Int): Chat
+    postsFeed(page: Int, limit: Int): PostFeed
   }
 
   type RootMutation {

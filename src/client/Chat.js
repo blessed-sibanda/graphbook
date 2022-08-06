@@ -50,6 +50,7 @@ const Chat = (props) => {
               fragment: gql`
                 fragment NewMessage on Chat {
                   id
+                  type
                 }
               `,
             });
@@ -91,6 +92,7 @@ const Chat = (props) => {
       <div className="messages">
         {chat.messages.map((message, j) => (
           <div
+            key={"message" + message.id}
             className={"message " + (message.user.id > 1 ? "left" : "right")}
           >
             {message.text}
