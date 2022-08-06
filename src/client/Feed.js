@@ -46,10 +46,24 @@ const Feed = () => {
                 }
               `,
             });
+
             return [newPostRef, ...existingPosts];
           },
         },
       });
+    },
+    optimisticResponse: {
+      __typename: "mutation",
+      addPost: {
+        __typename: "Post",
+        text: postContent,
+        id: -1,
+        user: {
+          __typename: "User",
+          username: "Loading...",
+          avatar: "/uploads/loading.gif",
+        },
+      },
     },
   });
 
