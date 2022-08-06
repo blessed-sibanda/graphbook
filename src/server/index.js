@@ -3,7 +3,7 @@ import express from "express";
 import helmet from "helmet";
 import cors from "cors";
 import compress from "compression";
-import services from "./services";
+import servicesLoader from "./services";
 import db from "./database";
 
 const app = express();
@@ -27,6 +27,8 @@ app.use(compress());
 
 app.use(cors());
 
+const utils = { db };
+const services = servicesLoader(utils);
 const serviceNames = Object.keys(services);
 
 for (let i = 0; i < serviceNames.length; i++) {
