@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import "../../assets/css/styles.css";
+import Chats from "./Chats";
 import Feed from "./Feed";
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
         />
       </Helmet>
       <Feed />
+      <Chats />
     </div>
   );
 };

@@ -24,6 +24,7 @@ const typeDefinitions = gql`
     id: Int
     messages: [Message]
     users: [User]
+    lastMessage: Message
   }
 
   input PostInput {
