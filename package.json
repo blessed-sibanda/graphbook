@@ -11,9 +11,12 @@
   "author": "Blessed Sibanda",
   "license": "ISC",
   "dependencies": {
+    "@graphql-tools/schema": "^8.5.1",
+    "apollo-server-express": "^3.10.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "express": "^4.18.1",
+    "graphql": "^16.5.0",
     "helmet": "^5.1.1",
     "nodemon": "^2.0.19",
     "react": "^18.2.0",
