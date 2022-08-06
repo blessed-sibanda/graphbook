@@ -30,7 +30,27 @@ const ADD_POST = gql`
 const Feed = () => {
   const [postContent, setPostContent] = useState("");
   const [addPost] = useMutation(ADD_POST, {
-    refetchQueries: [{ query: GET_POSTS }],
+    update(cache, { data: { addPost } }) {
+      // const data = cache.readQuery({ query: GET_POSTS });
+      // const newData = { posts: [addPost, ...data.posts] };
+      // cache.writeQuery({ query: GET_POSTS, data: newData });
+
+      cache.modify({
+        fields: {
+          posts(existingPosts = []) {
+            const newPostRef = cache.writeFragment({
+              data: addPost,
+              fragment: gql`
+                fragment NewPost on Post {
+                  id
+                }
+              `,
+            });
+            return [newPostRef, ...existingPosts];
+          },
+        },
+      });
+    },
   });
 
   const handleSubmit = (event) => {
