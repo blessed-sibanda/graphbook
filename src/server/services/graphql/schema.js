@@ -2,6 +2,7 @@ import { gql } from "apollo-server-express";
 
 const typeDefinitions = gql`
   type User {
+    id: Int
     avatar: String
     username: String
   }
@@ -10,6 +11,19 @@ const typeDefinitions = gql`
     id: Int
     text: String
     user: User
+  }
+
+  type Message {
+    id: Int
+    text: String
+    chat: Chat
+    user: User
+  }
+
+  type Chat {
+    id: Int
+    messages: [Message]
+    users: [User]
   }
 
   input PostInput {
@@ -23,6 +37,7 @@ const typeDefinitions = gql`
 
   type RootQuery {
     posts: [Post]
+    chats: [Chat]
   }
 
   type RootMutation {
