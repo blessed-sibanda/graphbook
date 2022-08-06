@@ -1,5 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import React, { useState } from "react";
+import { GET_CHATS } from "./apollo/queries/getChats";
 import Chat from "./Chat";
 import Error from "./components/error";
 import Loading from "./components/loading";
@@ -22,22 +23,6 @@ const shorten = (text) => {
   }
   return text;
 };
-
-const GET_CHATS = gql`
-  {
-    chats {
-      id
-      users {
-        id
-        avatar
-        username
-      }
-      lastMessage {
-        text
-      }
-    }
-  }
-`;
 
 const Chats = () => {
   const { loading, error, data } = useQuery(GET_CHATS);
