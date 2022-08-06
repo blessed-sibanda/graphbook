@@ -11,7 +11,10 @@
   "author": "Blessed Sibanda",
   "license": "ISC",
   "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
     "express": "^4.18.1",
+    "helmet": "^5.1.1",
     "nodemon": "^2.0.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
