@@ -49,6 +49,10 @@ const typeDefinitions = gql`
     posts: [Post]
   }
 
+  type Response {
+    success: Boolean
+  }
+
   type RootQuery {
     posts: [Post]
     chats: [Chat]
@@ -60,6 +64,7 @@ const typeDefinitions = gql`
     addPost(post: PostInput!): Post
     addChat(chat: ChatInput!): Chat
     addMessage(message: MessageInput!): Message
+    deletePost(postId: Int!): Response
   }
 
   schema {
